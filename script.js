@@ -4,39 +4,11 @@ const getData = () => {
     const inputs = document.querySelectorAll("input");
 
     inputs.forEach(input => {
-        input.addEventListener("keyup", function () {
-            let meter = +this.value;
-            if (this.id == "kelometer") {
-                meter = +this.value * 1000
-                document.getElementById("kelometer").value = this.value
-            }
-
-            else if (this.id == "centi") {
-                meter = +this.value / 100;
-                document.getElementById("centi").value = +this.value;
-            }
-
-            else if (this.id == "inch") {
-                meter = +this.value / 39.37;
-                document.getElementById("inch").value = +this.value
-            }
-
-            else if (this.id == "feet") {
-                meter = +this.value / 3.281
-                document.getElementById("feet").value = +this.value
-            }
-
-            else if (this.id == "yards") {
-                meter = +this.value / 1.094
-                document.getElementById("yards").value = +this.value
-            }
-
-            else if (this.id == "mile") {
-                meter = +this.value * 1609
-                document.getElementById("mile").value = +this.value
-            }
-            displayData(meter)
-        })
+        input.onkeyup = function() {
+           let  meter = this.id == "kelometer" ? parseFloat(this.value * 1000) : this.id == "centi" ? parseFloat(this.value / 100) : this.id == "inch" ? parseFloat(this.value / 39.37) : this.id == "feet" ? parseFloat(this.value / 3.281) : this.id == "yards" ? parseFloat(this.value / 1.094) : this.id == "mile" ? parseFloat(this.value * 1609 ): parseFloat(this.value)
+           this.value = parseFloat(this.value)
+           displayData(meter)
+        }
 
     })
 }

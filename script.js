@@ -8,26 +8,19 @@ const getData = () => {
                 inputs.forEach(input => input.value = "")
                 return;
             }
-            displayData(inputs, this)
+            const meter = eval(this.dataset.converttometer.replace("value", this.value))
+            displayData(meter,inputs)
         }
     })
 }
 getData()
 
 
-const displayData = (inputs, input) => {
-    const arrayOfUnitName = Object.keys(input.dataset);
-    const arrayOfConvertResult = [];
-    const objOfDataSet = input.dataset;
-
-    for (let i = 0; i < arrayOfUnitName.length; i++) {
-        arrayOfConvertResult.push(eval(objOfDataSet[arrayOfUnitName[i]].replace("value", input.value)))
-    }
-
+const displayData = (meter,inputs) => {
     for (let i = 0; i < inputs.length; i++) {
-        inputs[i].value = arrayOfConvertResult[i];
+        const equation = eval(inputs[i].dataset.convertfrommeter.replace("value", meter))
+        inputs[i].value = equation;
     }
-
 }
 
 const resetInputs = () => {

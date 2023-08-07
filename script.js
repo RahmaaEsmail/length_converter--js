@@ -18,13 +18,13 @@ getData()
 
 const displayData = (meter,input) => {
 
-    for (let i = 0; i < inputs.length; i++) {
-        const equation = eval(inputs[i].dataset.convertfrommeter.replace("value", meter))
-        if (input == inputs[i]) {
-           continue;
+    inputs.forEach(item => {
+        const equation = eval(item.dataset.convertfrommeter.replace("value", meter))
+        if (input != item) {
+            item.value = equation;
         }
-        inputs[i].value = equation;
-    }
+    })
+
 }
 
 const resetInputs = () => {

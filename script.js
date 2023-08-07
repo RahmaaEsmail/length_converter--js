@@ -1,7 +1,7 @@
 const resetBtn = document.querySelector(".reset-btn");
+const inputs = document.querySelectorAll("input");
 
 const getData = () => {
-    const inputs = document.querySelectorAll("input");
     inputs.forEach(input => {
         input.onkeyup = function () {
             if (this.value == "") {
@@ -9,14 +9,14 @@ const getData = () => {
                 return;
             }
             const meter = eval(this.dataset.converttometer.replace("value", this.value))
-            displayData(meter,inputs)
+            displayData(meter)
         }
     })
 }
 getData()
 
 
-const displayData = (meter,inputs) => {
+const displayData = (meter) => {
     for (let i = 0; i < inputs.length; i++) {
         const equation = eval(inputs[i].dataset.convertfrommeter.replace("value", meter))
         inputs[i].value = equation;
@@ -24,7 +24,6 @@ const displayData = (meter,inputs) => {
 }
 
 const resetInputs = () => {
-    const inputs = document.querySelectorAll("input");
     inputs.forEach(input => {
         input.value = ''
     })

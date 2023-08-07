@@ -9,16 +9,20 @@ const getData = () => {
                 return;
             }
             const meter = eval(this.dataset.converttometer.replace("value", this.value))
-            displayData(meter)
+            displayData(meter,this)
         }
     })
 }
 getData()
 
 
-const displayData = (meter) => {
+const displayData = (meter,input) => {
+
     for (let i = 0; i < inputs.length; i++) {
         const equation = eval(inputs[i].dataset.convertfrommeter.replace("value", meter))
+        if (input == inputs[i]) {
+           continue;
+        }
         inputs[i].value = equation;
     }
 }

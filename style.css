@@ -59,6 +59,10 @@ label {
     color: #323232;
 }
 
+.reset-btn {
+    cursor: pointer;
+}
+
 button {
     background-color: #0093e9;
     border: 1px solid #0093e9;

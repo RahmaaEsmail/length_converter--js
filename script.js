@@ -5,7 +5,7 @@ const getData = () => {
     inputs.forEach(input => {
         input.onkeyup = function () {
             if (this.value == "") {
-                inputs.forEach(input => input.value = "")
+                resetInputs()
                 return;
             }
             const meter = eval(this.dataset.converttometer.replace("value", this.value))
